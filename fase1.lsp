@@ -29,9 +29,19 @@
 ;;; /* Factorial */
 (format t "Factorial")
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 ;; Obtenido de https://stackoverflow.com/questions/47602677/recursive-factorial-function-in-common-lisp
 (defun factorial (n)
   (if (= n 1)              
       1                           
       (* n (factorial (- n 1))))
+<<<<<<< Updated upstream
       ) 
+=======
+      ) 
+>>>>>>> 00b9c9497a5b570c263f9cb64a4c4a5d721defda
+>>>>>>> Stashed changes
