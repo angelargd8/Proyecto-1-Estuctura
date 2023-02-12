@@ -11,7 +11,7 @@
 (defun fahr-cel (fahr)
 
   ;; formula para la conversión de unidades °F a °C, retornando el resultado
-  (/ (- fahrenheit 32) 1.8))
+  (/ (- fahr 32) 1.8))
 
 ;;; Ejemplo:
 ;; Envío: 32°F y 68° a fahr-cel
