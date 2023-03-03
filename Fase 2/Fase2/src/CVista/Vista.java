@@ -1,4 +1,4 @@
-package Fase2.CVista;
+package CVista;
 
 public class Vista {
     

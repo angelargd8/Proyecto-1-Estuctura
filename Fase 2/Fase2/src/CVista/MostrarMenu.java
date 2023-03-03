@@ -1,4 +1,4 @@
-package Fase 2.CVista;
+package CVista;
 
 public class MostrarMenu {
     
