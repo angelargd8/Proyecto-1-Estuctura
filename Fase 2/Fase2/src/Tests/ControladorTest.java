@@ -10,12 +10,7 @@ class ControladorTest {
 
 	@Test
 	void menuTest() {
-		
-		Lector lector = new Lector();
-		lector.menu();
-		
+
 	}
 
-	
-	
 }

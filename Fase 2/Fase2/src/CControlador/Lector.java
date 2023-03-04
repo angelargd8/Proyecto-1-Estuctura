@@ -28,12 +28,17 @@ public class Lector {
 		// ========================
 		// || Pedir instrucciones||
 		// ========================
-		
+
 		// instancia de Scanner
 		Scanner s = new Scanner(System.in);
-		
+
 		// respuesta del usuario
 		String respuesta = s.next();
+
+		Traductor traductor = new Traductor();
+		
+		traductor.dividir(respuesta);
+		
 		
 		// esta respuesta debe enviarse a un stack y evaluarlo
 
