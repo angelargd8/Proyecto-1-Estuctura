@@ -33,15 +33,19 @@ public class Lector {
 		Scanner s = new Scanner(System.in);
 
 		// respuesta del usuario
-		String respuesta = s.next();
+		String respuesta = s.nextLine();
 
 		Traductor traductor = new Traductor();
 		
+		//traductor.traducir(traductor.dividir(respuesta));
 		traductor.dividir(respuesta);
 		
 		
 		// esta respuesta debe enviarse a un stack y evaluarlo
 
+		
+		
+		
 	}
 
 }
