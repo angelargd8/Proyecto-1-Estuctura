@@ -43,8 +43,20 @@ public class Lector {
 				System.out.println("La instruccion es: " + "\"" + linea + "\"");
 				// Tokens
 				StackArrayList<Object> tokens = Traductor.dameToken(linea);
-				// Ver la cola
+				// Ver Cola
 				Traductor.convertirTokenLista(tokens);
+				// Lista para leer los tokens
+				Object[] valores = new Object[tokens.size()];
+
+				// Recorrer los tokens y gurdarlos en el list
+				for (int i = tokens.size() - 1; i >= 0; i--) {
+					valores[i] = tokens.pop();
+				}
+
+				// Mostrar Tokens
+				System.out.println("Los tokens son: " + "\"" + Arrays.toString(valores) + "\"");
+
+				
 				System.out.println("==============================");
 
 			}
