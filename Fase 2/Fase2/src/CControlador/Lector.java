@@ -7,7 +7,7 @@ import java.util.Scanner;
 //Paquete con las operaciones de traductor
 import CModelos.*;
 // Libreria para leer tokens/stack
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class Lector {
 
@@ -44,19 +44,7 @@ public class Lector {
 				// Tokens
 				StackArrayList<Object> tokens = Traductor.dameToken(linea);
 				// Ver Cola
-				Traductor.convertirTokenLista(tokens);
-				// Lista para leer los tokens
-				Object[] valores = new Object[tokens.size()];
-
-				// Recorrer los tokens y gurdarlos en el list
-				for (int i = tokens.size() - 1; i >= 0; i--) {
-					valores[i] = tokens.pop();
-				}
-
-				// Mostrar Tokens
-				System.out.println("Los tokens son: " + "\"" + Arrays.toString(valores) + "\"");
-
-				
+				Traductor.convertirTokenCola(tokens);
 				System.out.println("==============================");
 
 			}

@@ -1,11 +1,11 @@
 package CModelos;
 
-//libreria para el uso de ArrayList
+// Libreria para el uso de ArrayList
 import java.util.ArrayList;
 
 public class StackArrayList<E> implements IStack<E> {
 
-	// stack tipo arraylist a utilizar
+	// Stack tipo arraylist a utilizar
 	protected ArrayList<E> data;
 
 	/**
