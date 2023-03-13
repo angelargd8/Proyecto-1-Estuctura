@@ -30,7 +30,7 @@ public class Lector {
 		try {
 
 			// Ruta del archivo de instrucciones
-			File archivo = new File("Instrucciones.txt");
+			File archivo = new File("CArchivos\\Instrucciones.txt");
 			// Instancia de Scanner para leer el archivo
 			Scanner scanner = new Scanner(archivo);
 

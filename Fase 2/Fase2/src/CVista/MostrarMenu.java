@@ -18,13 +18,16 @@ public class MostrarMenu {
 		vista.Mensaje();
 		try {
 			while(opcion!=3){
-				opcion = vista.SeleccioneMenu("Escoja una opción: \n1. Mostrar expresión del archivo\n2. Operar expresión del archivo");
+				opcion = vista.SeleccioneMenu("Escoja una opción: \n1. Mostrar expresión del archivo\n2. Operar expresión del archivo\n3. Salir");
 				if (opcion==1){
 					controlador.LeerArchivo();
 
 				}if (opcion==2){
 
-				}else{
+				}if (opcion==3){
+					break;
+				}
+				else{
 					vista.validacion();
 				}
 			
