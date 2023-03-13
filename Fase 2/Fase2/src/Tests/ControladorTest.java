@@ -18,9 +18,9 @@ class ControladorTest {
 	@Test
 	void metodoTest() {
 		
-		Object[] valores = new Object[2];
+		//Object[] valores = new Object[2];
 		
-		Traductor.convertirLista(valores);
+		//Traductor.convertirLista(valores);
 		
 		
 	}

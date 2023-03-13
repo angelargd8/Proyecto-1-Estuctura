@@ -1,7 +1,7 @@
 package CModelos;
 
 // Libreria para leer tokens/stack
-// import java.util.Arrays;
+import java.util.Arrays;
 
 public class Traductor {
 
@@ -59,6 +59,12 @@ public class Traductor {
 		// Probando el retorno de Cola
 		// System.out.println("Los tokens son: " + "\"" + Arrays.toString(listaTemporal)
 		// + "\"");
+
+		// Lista para leer los tokens
+		Object[] prueba = convertirLista(valores);
+
+		System.out.println("Convertido: " + "\"" + Arrays.toString(prueba) + "\"");
+
 		return valores;
 	}
 
@@ -78,7 +84,7 @@ public class Traductor {
 		for (int i = 0; i < size; i++) {
 
 			// Valor recorrido
-			String valorActual = (String) origen.dequeue();
+			String valorActual = (String) origen.peek();
 
 			/*
 			 * Comienza el algoritmo
@@ -87,32 +93,26 @@ public class Traductor {
 			// Si el valor es "(" debe de realizar recursividad para realizar una nueva
 			// lista
 			if (valorActual.equals("(")) {
-				
+				// Quitar el valor actual
+				origen.dequeue();
 
-				convertirLista
-				
-				
-				
-				
+				return (Object[]) (temporal[i] = convertirLista(origen));
+
 				// Si el valor es ")", acabar el metodo y retonar la lista que se lleva
 			} else if (valorActual.equals(")")) {
 
-				
-				
-				
-				
+				return temporal;
+
 				// Si no debe hacer recursividad o terminar el método, meter a origen el valor
 				// actual
 			} else {
+				// Meter a lista el siguiente valor
+				temporal[i] = origen.dequeue();
 
-				
-				
-				
 			}
-
 		}
 
-		return null;
+		return temporal;
 	}
 
 }
