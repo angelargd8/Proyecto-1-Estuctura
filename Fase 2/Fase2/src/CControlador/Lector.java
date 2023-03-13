@@ -1,8 +1,13 @@
 package CControlador;
 
-// libreria para el uso de Scanner
+// Librerias para leer el archivo de instrucciones txt
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-import CModelos.Traductor;
+//Paquete con las operaciones de traductor
+import CModelos.*;
+// Libreria para leer tokens/stack
+import java.util.Arrays;
 
 public class Lector {
 
@@ -22,30 +27,37 @@ public class Lector {
 		System.out.println("||Traductor LISP-JAVA||");
 		System.out.println("=======================");
 
-		// pedir la instruccion
-		System.out.println("Ingresa tu instrucción");
+		try {
 
-		// ========================
-		// || Pedir instrucciones||
-		// ========================
+			// Ruta del archivo de instrucciones
+			File archivo = new File("Instrucciones.txt");
+			// Instancia de Scanner para leer el archivo
+			Scanner scanner = new Scanner(archivo);
 
-		// instancia de Scanner
-		Scanner s = new Scanner(System.in);
+			// Lee el archivo línea por línea
+			while (scanner.hasNextLine()) {
+				String linea = scanner.nextLine();
 
-		// respuesta del usuario
-		String respuesta = s.nextLine();
+				// Muestra la instrucción y seguidamente su token
+				System.out.println("==============================");
+				System.out.println("La instruccion es: " + "\"" + linea + "\"");
+				// Tokens
+				StackArrayList<Object> tokens = Traductor.dameToken(linea);
+				// Ver la cola
+				Traductor.convertirTokenLista(tokens);
+				System.out.println("==============================");
 
-		Traductor traductor = new Traductor();
-		
-		//traductor.traducir(traductor.dividir(respuesta));
-		traductor.dividir(respuesta);
-		
-		
-		// esta respuesta debe enviarse a un stack y evaluarlo
+			}
+			// Cierra el objeto Scanner
+			scanner.close();
 
-		
-		
-		
+		} catch (FileNotFoundException e) {
+			System.out.println("El archivo no se encuentra.");
+			e.printStackTrace();
+		}
+
+		// traductor.traducir(traductor.dividir(respuesta));
+		// traductor.dividir(respuesta);
+
 	}
-
 }
