@@ -20,10 +20,9 @@ public class MostrarMenu {
 			while(opcion!=3){
 				opcion = vista.SeleccioneMenu("Escoja una opción: \n1. Mostrar expresión del archivo\n2. Operar expresión del archivo\n3. Salir");
 				if (opcion==1){
-					controlador.LeerArchivo();
-
+					controlador.MostrarExpresion();
 				}if (opcion==2){
-
+					controlador.LeerArchivo();
 				}if (opcion==3){
 					break;
 				}

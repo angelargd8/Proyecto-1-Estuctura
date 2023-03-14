@@ -30,7 +30,7 @@ public class Lector {
 		try {
 
 			// Ruta del archivo de instrucciones
-			File archivo = new File("CArchivos\\Instrucciones.txt");
+			File archivo = new File("Instrucciones.txt"); //pido perdón q cambie mucho la ruta, pero visual no me la reconocía :( 
 			// Instancia de Scanner para leer el archivo
 			Scanner scanner = new Scanner(archivo);
 
@@ -60,4 +60,5 @@ public class Lector {
 		// traductor.dividir(respuesta);
 
 	}
+	
 }
