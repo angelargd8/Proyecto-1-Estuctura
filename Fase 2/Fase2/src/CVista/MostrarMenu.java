@@ -1,16 +1,21 @@
 package CVista;
 
 import CControlador.Lector;
+
+import java.util.ArrayList;
+
 import CControlador.Controlador;
 
 public class MostrarMenu {
 	Vista vista; 
 	int opcion=0;
 	Controlador controlador;
+	String input;
 
 	public MostrarMenu(){
 		vista = new Vista();
 		controlador = new Controlador();
+		
 	}
 
 
@@ -22,7 +27,13 @@ public class MostrarMenu {
 				if (opcion==1){
 					controlador.MostrarExpresion();
 				}if (opcion==2){
-					controlador.LeerArchivo();
+					//controlador.LeerArchivo();
+					//ArrayList<String>  resultado = new ArrayList<>();
+					
+					input = vista.SeleccioneMenuString("Ingrese la expresión a calcular:");
+					//resultado.add(input);
+					controlador.ExpresionM(input);
+
 				}if (opcion==3){
 					break;
 				}
