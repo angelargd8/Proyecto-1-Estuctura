@@ -74,6 +74,12 @@ public class Parser {
                     return tokenQueue.poll().toString();
                 case "QUOTE":
                     return tokenQueue.poll().toString();
+                case "DEFUN":
+                    return null;
+                case "SETQ":
+                    return null;
+                case "COND":
+                    return null;
                 case ">":
                     try {
                         Integer operandA = Integer.parseInt(tokenQueue.poll().toString());
