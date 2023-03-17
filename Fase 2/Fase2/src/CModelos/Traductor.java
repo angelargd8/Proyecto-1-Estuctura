@@ -61,7 +61,7 @@ public class Traductor {
 		// + "\"");
 
 		// Lista para leer los tokens
-		Object[] prueba = convertirLista(valores);
+		Object[] prueba = (Object[]) convertirLista(valores);
 
 		System.out.println("Convertido: " + "\"" + Arrays.toString(prueba) + "\"");
 
@@ -73,7 +73,7 @@ public class Traductor {
 	 * 
 	 * @param tokens, lista con los valores a convertir
 	 */
-	public static Object[] convertirLista(QueueArray<Object> origen) {
+	public static Object convertirLista(QueueArray<Object> origen) {
 
 		// Tamaño de la lista a convertir
 		int size = origen.size();
@@ -83,6 +83,8 @@ public class Traductor {
 		// Recorrer la lista para comprobar si se debe de crear una nueva lista
 		for (int i = 0; i < size; i++) {
 
+			// añadir una lista temporal
+			
 			// Valor recorrido
 			String valorActual = (String) origen.peek();
 
@@ -96,7 +98,9 @@ public class Traductor {
 				// Quitar el valor actual
 				origen.dequeue();
 
-				return (Object[]) (temporal[i] = convertirLista(origen));
+				temporal[i] = convertirLista(origen);
+
+				return temporal[i];
 
 				// Si el valor es ")", acabar el metodo y retonar la lista que se lleva
 			} else if (valorActual.equals(")")) {
@@ -106,6 +110,7 @@ public class Traductor {
 				// Si no debe hacer recursividad o terminar el método, meter a origen el valor
 				// actual
 			} else {
+
 				// Meter a lista el siguiente valor
 				temporal[i] = origen.dequeue();
 
