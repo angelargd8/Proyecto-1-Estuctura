@@ -50,7 +50,7 @@ public class Vista {
     }
 
     public void validacion2(){
-        System.out.println("\n- Esta mal el :'( '-");
+        System.out.println("\n- Hay  algo que ha ingresado mal, revise los espacios, puede afectar a su resultado-");
     }
 
 }

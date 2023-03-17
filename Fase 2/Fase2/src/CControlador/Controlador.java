@@ -65,9 +65,9 @@ public class Controlador {
         for (int i =0; i<StringExpresion.length(); i++){
             System.out.println(StringExpresion.charAt(i));
             if (StringExpresion.charAt(i)=='('){
-                int UltimoParentesis = UltimoParentesis(StringExpresion,i);
+                int Parentesis = Parentesis(StringExpresion,i);
                 //resultado.add(StringExpresion.substring(i, i+1));
-                resultado.add(StringExpresion.substring(i+1, UltimoParentesis));
+                resultado.add(StringExpresion.substring(i+1, Parentesis));
 
             }else if (StringExpresion.charAt(i)==')'){
                 vista.validacion2();
@@ -76,12 +76,12 @@ public class Controlador {
                 i++;
                 //System.out.println("resultado"+resultado);
             }else{
-                int UltimoParentesis = ElVerdaderoAtom(StringExpresion,i);
-                //resultado.add(StringExpresion.substring(i, UltimoParentesis));
-                //resultado.add(((String) Atom(StringExpresion)).substring(i, UltimoParentesis));
-                resultado.add(((String) Atom(StringExpresion)).substring(i, UltimoParentesis));
+                int Parentesis = ElVerdaderoAtom(StringExpresion,i);
+                //resultado.add(StringExpresion.substring(i, Parentesis));
+                //resultado.add(((String) Atom(StringExpresion)).substring(i, Parentesis));
+                resultado.add(((String) Atom(StringExpresion)).substring(i, Parentesis));
 
-                i = UltimoParentesis;
+                i = Parentesis;
                 //System.out.println("resultado"+resultado);
 
             }
@@ -99,7 +99,7 @@ public class Controlador {
     }
 
     //Esto es para que encuentre el ultimo parentesis que cierra a la expresion 
-    public int UltimoParentesis(String StringExpresion, int Inicio){
+    public int Parentesis(String StringExpresion, int Inicio){
         
         int contador =0;
         for (int i=Inicio; i<StringExpresion.length(); i++){
