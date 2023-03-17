@@ -49,5 +49,8 @@ public class Vista {
         System.out.println("\n- Se abrio el archivo correctamente   -");
     }
 
+    public void validacion2(){
+        System.out.println("\n- Esta mal el :'( '-");
+    }
 
 }

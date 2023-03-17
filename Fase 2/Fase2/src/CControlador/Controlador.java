@@ -60,22 +60,27 @@ public class Controlador {
         //expresion :(+ 2 3)
         ArrayList<String> resultado = new ArrayList<>();
         resultado.add(StringExpresion);
-        System.out.println(resultado);
+        //System.out.println("resultado"+resultado);
+
         for (int i =0; i<StringExpresion.length(); i++){
-            System.out.println(StringExpresion.charAt(i));
+            //System.out.println(StringExpresion.charAt(i));
             if (StringExpresion.charAt(i)=='('){
-                resultado.add(StringExpresion.substring(i, i+1));
-                System.out.println("xd"+resultado);
+                int UltimoParentesis = UltimoParentesis(StringExpresion,i);
+                //resultado.add(StringExpresion.substring(i, i+1));
+                resultado.add(StringExpresion.substring(i+1, UltimoParentesis));
+
+                //System.out.println("resultado"+resultado);
             }else if (StringExpresion.charAt(i)==')'){
-                vista.validacion();
+                vista.validacion2();
                 //resultado.add(StringExpresion.substring(i, i+1));
             }else if (Character.isWhitespace(StringExpresion.charAt(i))){
-                System.out.println(i);
                 i++;
-                System.out.println("2"+i);
+                //System.out.println("resultado"+resultado);
             }else{
-                resultado.add(StringExpresion.substring(i, i+1));
-                System.out.println("xddd"+resultado);
+                int UltimoParentesis = UltimoParentesis(StringExpresion,i);
+                resultado.add(StringExpresion.substring(i, UltimoParentesis));
+                i = UltimoParentesis;
+                //System.out.println("resultado"+resultado);
 
             }
 
@@ -86,10 +91,30 @@ public class Controlador {
             ExpresionLista.add(elemento);
             System.out.println(elemento);
         }*/
+        System.out.println("resultado"+resultado);
+
         return resultado;
     }
 
+    //Esto es para que encuentre el ultimo parentesis que cierra a la expresion 
+    public int UltimoParentesis(String StringExpresion, int Inicio){
+        
+        int contador =0;
+        for (int i=Inicio; i<StringExpresion.length(); i++){
+            char caracter= StringExpresion.charAt(i);
+            if (caracter=='('){
+                contador++;
+            }else if (caracter=='('){
+                contador--;
+                if (contador==0){
+                    return i;
+                }
+            }
+        }
+        throw new IllegalArgumentException();
+        //vista.validacion2();        
 
+    }
 
     /*public ArrayList<String> ExpresionM (ArrayList<String> StringExpresion){
         ArrayList<String> resultado = new ArrayList<>();
