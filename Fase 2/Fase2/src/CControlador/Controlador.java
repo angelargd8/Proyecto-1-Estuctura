@@ -63,13 +63,12 @@ public class Controlador {
         //System.out.println("resultado"+resultado);
 
         for (int i =0; i<StringExpresion.length(); i++){
-            //System.out.println(StringExpresion.charAt(i));
+            System.out.println(StringExpresion.charAt(i));
             if (StringExpresion.charAt(i)=='('){
                 int UltimoParentesis = UltimoParentesis(StringExpresion,i);
                 //resultado.add(StringExpresion.substring(i, i+1));
                 resultado.add(StringExpresion.substring(i+1, UltimoParentesis));
 
-                //System.out.println("resultado"+resultado);
             }else if (StringExpresion.charAt(i)==')'){
                 vista.validacion2();
                 //resultado.add(StringExpresion.substring(i, i+1));
@@ -77,8 +76,9 @@ public class Controlador {
                 i++;
                 //System.out.println("resultado"+resultado);
             }else{
-                int UltimoParentesis = UltimoParentesis(StringExpresion,i);
-                resultado.add(StringExpresion.substring(i, UltimoParentesis));
+                int UltimoParentesis = ElVerdaderoAtom(StringExpresion,i);
+                //resultado.add(StringExpresion.substring(i, UltimoParentesis));
+                resultado.add(((String) Atom(StringExpresion)).substring(i, UltimoParentesis));
                 i = UltimoParentesis;
                 //System.out.println("resultado"+resultado);
 
@@ -91,7 +91,7 @@ public class Controlador {
             ExpresionLista.add(elemento);
             System.out.println(elemento);
         }*/
-        System.out.println("resultado"+resultado);
+        System.out.println("resultado: "+resultado);
 
         return resultado;
     }
@@ -114,6 +114,47 @@ public class Controlador {
         throw new IllegalArgumentException();
         //vista.validacion2();        
 
+    }
+
+    public  Object Atom(String atom){
+             
+        if (ValidacionCaracterInt(atom)){
+            return Integer.parseInt(atom);
+        }else if (ValidacionCaracterDouble(atom)){
+            return Double.parseDouble(atom);
+        }else{
+            return atom; // el string
+        }
+
+        //return atom;
+    }
+
+    public boolean ValidacionCaracterInt(String character){
+        try{
+            Integer.parseInt(character);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+
+    public boolean ValidacionCaracterDouble(String character){
+        try{
+            Double.parseDouble(character);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public int ElVerdaderoAtom(String expresion, int inicio){
+        int i=inicio;
+        int contador=0;
+        while (i<expresion.length() && !Character.isWhitespace(expresion.charAt(i)) && expresion.charAt(i)!= ')'){
+            i++;
+        }
+        return i;
     }
 
     /*public ArrayList<String> ExpresionM (ArrayList<String> StringExpresion){
