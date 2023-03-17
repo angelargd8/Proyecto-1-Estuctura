@@ -56,7 +56,7 @@ public class Controlador {
 		
 	}
 
-    public ArrayList<String> ExpresionM (String StringExpresion){
+    public void ExpresionM (String StringExpresion){
         //expresion :(+ 2 3)
         ArrayList<String> resultado = new ArrayList<>();
         resultado.add(StringExpresion);
@@ -78,7 +78,9 @@ public class Controlador {
             }else{
                 int UltimoParentesis = ElVerdaderoAtom(StringExpresion,i);
                 //resultado.add(StringExpresion.substring(i, UltimoParentesis));
+                //resultado.add(((String) Atom(StringExpresion)).substring(i, UltimoParentesis));
                 resultado.add(((String) Atom(StringExpresion)).substring(i, UltimoParentesis));
+
                 i = UltimoParentesis;
                 //System.out.println("resultado"+resultado);
 
@@ -93,7 +95,7 @@ public class Controlador {
         }*/
         System.out.println("resultado: "+resultado);
 
-        return resultado;
+        //return resultado;
     }
 
     //Esto es para que encuentre el ultimo parentesis que cierra a la expresion 
@@ -104,7 +106,7 @@ public class Controlador {
             char caracter= StringExpresion.charAt(i);
             if (caracter=='('){
                 contador++;
-            }else if (caracter=='('){
+            }else if (caracter==')'){
                 contador--;
                 if (contador==0){
                     return i;
