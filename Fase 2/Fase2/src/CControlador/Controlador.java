@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import CVista.Vista;
+
 public class Controlador {
     Lector lector; 
     File file;
     String data;
+    Vista vista;
     //LinkedList<String> ExpresionLista;
     ArrayList<Object> ExpresionLista;
     //LinkedList<String> ExpresionTemp;
@@ -20,6 +23,7 @@ public class Controlador {
     public Controlador(){
         lector = new Lector();
         file = new File("Instrucciones.txt");
+        vista= new Vista();
         //ExpresionLista = new LinkedList<>();
         //ExpresionLista = new LinkedList<>();
         ExpresionTemp= " + 2 3";
@@ -59,7 +63,22 @@ public class Controlador {
         System.out.println(resultado);
         for (int i =0; i<StringExpresion.length(); i++){
             System.out.println(StringExpresion.charAt(i));
-            //if (StringExpresion.charAt(i)=='('){
+            if (StringExpresion.charAt(i)=='('){
+                resultado.add(StringExpresion.substring(i, i+1));
+                System.out.println("xd"+resultado);
+            }else if (StringExpresion.charAt(i)==')'){
+                vista.validacion();
+                //resultado.add(StringExpresion.substring(i, i+1));
+            }else if (Character.isWhitespace(StringExpresion.charAt(i))){
+                System.out.println(i);
+                i++;
+                System.out.println("2"+i);
+            }else{
+                resultado.add(StringExpresion.substring(i, i+1));
+                System.out.println("xddd"+resultado);
+
+            }
+
         }
         
         /*for (int i=0; i<ExpresionLista.size(); i++){
@@ -67,7 +86,7 @@ public class Controlador {
             ExpresionLista.add(elemento);
             System.out.println(elemento);
         }*/
-        return null;
+        return resultado;
     }
 
 
