@@ -2,8 +2,6 @@ package CVista;
 
 import CControlador.Lector;
 
-import java.util.ArrayList;
-
 import CControlador.Controlador;
 
 public class MostrarMenu {
@@ -23,9 +21,11 @@ public class MostrarMenu {
 		vista.Mensaje();
 		try {
 			while(opcion!=3){
-				opcion = vista.SeleccioneMenu("Escoja una opción: \n1. Mostrar expresión del archivo\n2. Operar expresión del archivo\n3. Salir");
+				opcion = vista.SeleccioneMenu("Escoja una opción: \n1. Operar expresión del archivo\n2. Operar expresión ingresada\n3. Salir");
 				if (opcion==1){
-					controlador.MostrarExpresion();
+					String exp = controlador.MostrarExpresion();
+					controlador.ExpresionM(exp);
+
 				}if (opcion==2){
 					//controlador.LeerArchivo();
 					//ArrayList<String>  resultado = new ArrayList<>();

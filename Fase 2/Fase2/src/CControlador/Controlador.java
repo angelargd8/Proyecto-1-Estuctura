@@ -37,7 +37,7 @@ public class Controlador {
         lector.menu();
     }
 
-    public void MostrarExpresion(){
+    public String MostrarExpresion(){
         try {
             Scanner leer_archivo = new Scanner(file);
 
@@ -45,14 +45,16 @@ public class Controlador {
                 data = leer_archivo.nextLine();
                 System.out.println("Expresión: "+ data);
             }
-
+            
             leer_archivo.close();
+            //return data;
             
 
         } catch (FileNotFoundException e) {
             System.out.println(" - Excepcion al abrir el archivo" + e);
 
         }
+        return data;
 		
 	}
 
@@ -61,9 +63,8 @@ public class Controlador {
         ArrayList<String> resultado = new ArrayList<>();
         resultado.add(StringExpresion);
         //System.out.println("resultado"+resultado);
-
         for (int i =0; i<StringExpresion.length(); i++){
-            System.out.println(StringExpresion.charAt(i));
+            //System.out.println(StringExpresion.charAt(i));
             if (StringExpresion.charAt(i)=='('){
                 int Parentesis = Parentesis(StringExpresion,i);
                 //resultado.add(StringExpresion.substring(i, i+1));
@@ -74,11 +75,9 @@ public class Controlador {
                 //resultado.add(StringExpresion.substring(i, i+1));
             }else if (Character.isWhitespace(StringExpresion.charAt(i))){
                 i++;
-                //System.out.println("resultado"+resultado);
             }else{
                 int Parentesis = ElVerdaderoAtom(StringExpresion,i);
                 //resultado.add(StringExpresion.substring(i, Parentesis));
-                //resultado.add(((String) Atom(StringExpresion)).substring(i, Parentesis));
                 resultado.add(((String) Atom(StringExpresion)).substring(i, Parentesis));
 
                 i = Parentesis;
@@ -93,6 +92,7 @@ public class Controlador {
             ExpresionLista.add(elemento);
             System.out.println(elemento);
         }*/
+        //resultado.remove(resultado.get(0);
         System.out.println("resultado: "+resultado);
 
         //return resultado;
@@ -118,6 +118,7 @@ public class Controlador {
 
     }
 
+    //validacion del tipo y atom
     public  Object Atom(String atom){
              
         if (ValidacionCaracterInt(atom)){
@@ -150,6 +151,7 @@ public class Controlador {
         }
     }
 
+    //para encontrar lo del final del atom
     public int ElVerdaderoAtom(String expresion, int inicio){
         int i=inicio;
         int contador=0;
