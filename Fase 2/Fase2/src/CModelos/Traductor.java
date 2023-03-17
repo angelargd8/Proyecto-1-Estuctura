@@ -1,8 +1,5 @@
 package CModelos;
 
-// Libreria para leer tokens/stack
-import java.util.Arrays;
-
 public class Traductor {
 
 	/**
@@ -30,6 +27,10 @@ public class Traductor {
 			tokens.push(valores[i]);
 
 		}
+
+		// Probando el retorno de Cola
+		// System.out.println("Los tokens son: " + "\"" + Arrays.toString(tokens) +
+		// "\"");
 		return tokens;
 	}
 
@@ -55,16 +56,6 @@ public class Traductor {
 		for (int x = 0; x < listaTemporal.length; x++) {
 			valores.enqueue(listaTemporal[x]);
 		}
-
-		// Probando el retorno de Cola
-		// System.out.println("Los tokens son: " + "\"" + Arrays.toString(listaTemporal)
-		// + "\"");
-
-		// Lista para leer los tokens
-		Object[] prueba = (Object[]) convertirLista(valores);
-
-		System.out.println("Convertido: " + "\"" + Arrays.toString(prueba) + "\"");
-
 		return valores;
 	}
 
@@ -72,52 +63,45 @@ public class Traductor {
 	 * Método para convertir una instruccion en su formato de lista
 	 * 
 	 * @param tokens, lista con los valores a convertir
+	 * @return result, lista de los tokens en un formato de lista
 	 */
-	public static Object convertirLista(QueueArray<Object> origen) {
+	public static Object[] convertirLista(QueueArray<Object> origen) {
+		// Lista final con todos los elementos
+		Object[] listFin = new Object[origen.size()];
+		// Indice inicial
+		int index = 0;
 
-		// Tamaño de la lista a convertir
-		int size = origen.size();
-		// Lista temporal que contendrá los valores finales
-		Object[] temporal = new Object[size];
+		// Recorrer mientas la cola no este vacía
+		while (!origen.empty()) {
 
-		// Recorrer la lista para comprobar si se debe de crear una nueva lista
-		for (int i = 0; i < size; i++) {
+			// Valor actual de la cola
+			String valorActual = (String) origen.dequeue();
 
-			// añadir una lista temporal
-			
-			// Valor recorrido
-			String valorActual = (String) origen.peek();
-
-			/*
-			 * Comienza el algoritmo
-			 */
-
-			// Si el valor es "(" debe de realizar recursividad para realizar una nueva
-			// lista
+			// Si el valorActual es "(" debe de realizar una nueva lista
 			if (valorActual.equals("(")) {
-				// Quitar el valor actual
-				origen.dequeue();
+				// Hace recursividad para crear una nueva lista
+				Object[] subList = convertirLista(origen);
+				// Añade a la listFin la sublista
+				listFin[index++] = subList;
 
-				temporal[i] = convertirLista(origen);
-
-				return temporal[i];
-
-				// Si el valor es ")", acabar el metodo y retonar la lista que se lleva
+				// Si el valor es ")", acabar el metodo y retornar la lista que se lleva
 			} else if (valorActual.equals(")")) {
 
-				return temporal;
+				Object[] result = new Object[index];
+				System.arraycopy(listFin, 0, result, 0, index);
+				return result;
 
-				// Si no debe hacer recursividad o terminar el método, meter a origen el valor
-				// actual
+				// Si no es un paréntesis, agregar a la lista
 			} else {
-
-				// Meter a lista el siguiente valor
-				temporal[i] = origen.dequeue();
-
+				listFin[index++] = valorActual;
 			}
 		}
-
-		return temporal;
+		// Se acabó los valores para agregar a listFin
+		// Se crea una lista result que contendrá los elementos de listFin que no están
+		// vacíos
+		Object[] result = new Object[index];
+		// System.arraycopy(origen, indice_de_inicio, destino, indice_de_inicio,cantidad_de_elementos_a_copiar)
+		System.arraycopy(listFin, 0, result, 0, index);
+		return result;
 	}
-
 }
