@@ -42,7 +42,7 @@ public class Vista {
     }
 
     public void validacion(){
-        System.out.println("\n- Opción no válida vuelva a intentarlo de nuevo -");
+        System.out.println("\n- --- -");
     }
 
     public void SeAbrioArchivo(){
