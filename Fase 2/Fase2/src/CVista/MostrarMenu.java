@@ -34,7 +34,7 @@ public class MostrarMenu {
 						Object tokenQueue = parser.readTokenQueue(parser.getTokenQueue(tokenizedExpression));
 						System.out.println("Result = " + parser.evaluateExpression((Queue<Object>) tokenQueue).toString());
 					} catch (Exception e) {
-						e.getMessage();
+						System.out.println(e.getMessage());
 					}
 
 				}if (opcion==2){
@@ -49,7 +49,7 @@ public class MostrarMenu {
 						Object tokenQueue = parser.readTokenQueue(parser.getTokenQueue(tokenizedExpression));
 						System.out.println("Result = " + parser.evaluateExpression((Queue<Object>) tokenQueue).toString());
 					} catch (Exception e) {
-						e.getMessage();
+						System.out.println(e.getMessage());
 					}
 
 				}if (opcion==3){
