@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.HashMap;
 
 public class Parser {
+    HashMap<String, Object> variables = new HashMap<String, Object>();
 
     public String[] tokenizeLispExpression(String expression) {
         // Agregar separadores a parentesis
@@ -77,9 +79,37 @@ public class Parser {
                 case "DEFUN":
                     return null;
                 case "SETQ":
-                    return null;
+                    //asignar valores a variables (setq variable valor)
+                    try {
+                        String variable= tokenQueue.poll().toString();
+                        Object value = evaluateExpression(tokenQueue);
+                        variables.put(variable, value);
+                        System.out.println("variable "+variable);
+                        return value;
+                    } catch (Exception e) {
+                        throw e;
+                    }
                 case "COND":
-                    return null;
+                    try {
+                        //no me funciona aún
+                        /*while (!tokenQueue.isEmpty()){
+                            Object condicion = evaluateExpression(tokenQueue);
+                            if (!(condicion instanceof Boolean)) {
+                                throw new Exception("COND no válido");
+                            }
+                            if ((Boolean) condicion) {
+                                return evaluateExpression(tokenQueue);
+                            }else {// si la condicion no se cumple, entonces se va a omitir el resultado
+                                tokenQueue.poll();
+                            }
+                            
+                        }
+                        throw new Exception("no hay una condicion en COND que se cumpla ");*/
+                        return null;
+                    } catch (Exception e) {
+                        throw e;
+                    }
+
                 case ">":
                     try {
                         Integer operandA = Integer.parseInt(tokenQueue.poll().toString());
@@ -172,5 +202,8 @@ public class Parser {
             throw e;
         } 
     }
+
+
+
 
 }
