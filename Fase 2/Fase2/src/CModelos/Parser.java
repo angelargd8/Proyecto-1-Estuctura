@@ -119,7 +119,16 @@ public class Parser {
                     } catch (Exception e) {
                         throw e;
                     }
-
+                case "EQUAL":
+                    try {
+                        String operandA = tokenQueue.poll().toString();
+                        String operandB = tokenQueue.poll().toString();
+                        if (!tokenQueue.isEmpty())
+                            throw new ArithmeticException("Too many operands for operation 'EQUAL'");
+                        return operandA.equals(operandB);
+                    } catch (Exception e) {
+                        throw e;
+                    }
                 case ">":
                     try {
                         Integer operandA = Integer.parseInt(tokenQueue.poll().toString());
