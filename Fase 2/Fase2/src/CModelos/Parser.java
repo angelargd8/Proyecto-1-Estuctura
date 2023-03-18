@@ -160,16 +160,20 @@ public class Parser {
                     } catch (Exception e) {
                         throw e;
                     }
-                // case "=":
-                //     try {
-                //         Object operandA = evaluateExpression(tokenQueue.poll());
-                //         Object operandB = tokenQueue.poll().toString();
-                //         if (!tokenQueue.isEmpty())
-                //             throw new ArithmeticException("Too many operands for operation '<='");
-                //         return operandA.equals(operandB);
-                //     } catch (Exception e) {
-                //         throw e;
-                //     }
+                case "=":
+                    try {
+                        Queue<Object> queueA =  new LinkedList<Object>();
+                        queueA.offer(tokenQueue.poll());
+                        Object operandA = evaluateExpression(queueA);
+                        Queue<Object> queueB =  new LinkedList<Object>();
+                        queueB.offer(tokenQueue.poll());
+                        Object operandB = evaluateExpression(queueB);
+                        if (!tokenQueue.isEmpty())
+                            throw new ArithmeticException("Too many operands for operation '<='");
+                        return operandA.equals(operandB);
+                    } catch (Exception e) {
+                        throw e;
+                    }
                 default:
                     throw new ArithmeticException("Undefined parameter '" + token.toString() + "'");
             }
