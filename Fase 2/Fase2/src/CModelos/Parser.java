@@ -109,6 +109,16 @@ public class Parser {
                     } catch (Exception e) {
                         throw e;
                     }
+                case "LIST":
+                    try {
+                        List<Object> list = new ArrayList<>();
+                        while (!tokenQueue.isEmpty()){
+                            list.add(evaluateExpression(tokenQueue));
+                        }
+                        return list;
+                    } catch (Exception e) {
+                        throw e;
+                    }
 
                 case ">":
                     try {
