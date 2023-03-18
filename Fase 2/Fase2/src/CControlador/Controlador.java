@@ -37,6 +37,10 @@ public class Controlador {
         lector.menu();
     }
 
+    
+    /** 
+     * @return String
+     */
     public String MostrarExpresion(){
         try {
             Scanner leer_archivo = new Scanner(file);
@@ -58,6 +62,10 @@ public class Controlador {
 		
 	}
 
+    
+    /** 
+     * @param StringExpresion
+     */
     public void ExpresionM (String StringExpresion){
         //expresion :(+ 2 3)
         ArrayList<String> resultado = new ArrayList<>();
@@ -98,6 +106,12 @@ public class Controlador {
         //return resultado;
     }
 
+    
+    /** 
+     * @param StringExpresion
+     * @param Inicio
+     * @return int
+     */
     //Esto es para que encuentre el ultimo parentesis que cierra a la expresion 
     public int Parentesis(String StringExpresion, int Inicio){
         
@@ -118,6 +132,11 @@ public class Controlador {
 
     }
 
+    
+    /** 
+     * @param atom
+     * @return Object
+     */
     //validacion del tipo y atom
     public  Object Atom(String atom){
              
@@ -132,6 +151,11 @@ public class Controlador {
         //return atom;
     }
 
+    
+    /** 
+     * @param character
+     * @return boolean
+     */
     public boolean ValidacionCaracterInt(String character){
         try{
             Integer.parseInt(character);
@@ -142,6 +166,11 @@ public class Controlador {
     }
 
 
+    
+    /** 
+     * @param character
+     * @return boolean
+     */
     public boolean ValidacionCaracterDouble(String character){
         try{
             Double.parseDouble(character);
@@ -151,6 +180,12 @@ public class Controlador {
         }
     }
 
+    
+    /** 
+     * @param expresion
+     * @param inicio
+     * @return int
+     */
     //para encontrar lo del final del atom
     public int ElVerdaderoAtom(String expresion, int inicio){
         int i=inicio;

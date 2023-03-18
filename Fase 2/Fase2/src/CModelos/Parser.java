@@ -10,6 +10,11 @@ import java.util.HashMap;
 public class Parser {
     HashMap<String, Object> variables = new HashMap<String, Object>();
 
+    
+    /** 
+     * @param expression
+     * @return String[]
+     */
     public String[] tokenizeLispExpression(String expression) {
         // Agregar separadores a parentesis
         expression = expression.replace("(", " ( ").replace(")", " ) ");
@@ -21,6 +26,12 @@ public class Parser {
         return expression.trim().split("\\s");
     }
 
+    
+    /** 
+     * @param tokenQueue
+     * @return Object
+     * @throws EOFException
+     */
     public Object readTokenQueue(Queue<Object> tokenQueue) throws EOFException{
         Object token = tokenQueue.poll();
         if (tokenQueue.isEmpty()) throw new EOFException("Expression is empty");
@@ -39,6 +50,11 @@ public class Parser {
         }
     }
 
+    
+    /** 
+     * @param tokens
+     * @return Queue<Object>
+     */
     public Queue<Object> getTokenQueue(String[] tokens) {
         Queue<Object> tokenQueue = new LinkedList<Object>();
         for (String token : tokens) {
@@ -47,6 +63,12 @@ public class Parser {
         return tokenQueue;
     }
 
+    
+    /** 
+     * @param tokenQueue
+     * @return Object
+     * @throws Exception
+     */
     public Object evaluateExpression(Queue<Object> tokenQueue) throws Exception {
         Object token = tokenQueue.poll();
         if (token instanceof Number) {
@@ -191,6 +213,11 @@ public class Parser {
         }
     }
 
+    
+    /** 
+     * @param element
+     * @return Object
+     */
     public Object atom(Object element) {
         try {
             return Integer.parseInt(element.toString());
@@ -203,6 +230,12 @@ public class Parser {
         }
     }
 
+    
+    /** 
+     * @param tokenQueue
+     * @return List<Integer>
+     * @throws Exception
+     */
     public List<Integer> tokenQueueToIntegerList(Queue<Object> tokenQueue) throws Exception {
         List<Integer> tokenList = new ArrayList<Integer>();
         for (Object token : tokenQueue) {
@@ -217,6 +250,12 @@ public class Parser {
         return tokenList;
     }
 
+    
+    /** 
+     * @param expression
+     * @return Object
+     * @throws Exception
+     */
     public Object parseLispExpression(String expression) throws Exception {
         String[] tokenizedExpression = tokenizeLispExpression(expression);
         try {

@@ -8,6 +8,10 @@ import CModelos.Parser;
 import org.junit.jupiter.api.Test;
 
 public class ParserTest {
+    
+    /** 
+     * @throws EOFException
+     */
     @Test
     public void Test() throws EOFException{
         Parser parser = new Parser();
